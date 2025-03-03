@@ -1,8 +1,23 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import GetQuotation from "./pages/GetQuotation";
+import History from "./pages/History";
+
 function App() {
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold text-blue-600">Silfine Japan Frontend</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/get-quotation" element={<GetQuotation />} />
+        <Route path="/history" element={<History />} />
+      </Routes>
+    </Router>
   );
 }
 
