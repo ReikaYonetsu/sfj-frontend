@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import loginBg from "../assets/login.png";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -19,30 +20,30 @@ function Login() {
       });
 
       const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Login failed");
-      }
+      if (!response.ok) throw new Error(data.error || "Login failed");
 
       localStorage.setItem("token", data.token);
-      navigate("/dashboard"); // Redirect after login
+      navigate("/dashboard");
     } catch (err) {
       setError(err.message);
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-bold text-center">Login</h2>
+    <div
+      className="h-screen flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: `url(${loginBg})` }}
+    >
+      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+        <h2 className="text-3xl font-bold text-center text-blue-600">Sign In</h2>
         {error && <p className="text-red-500 text-center">{error}</p>}
-        <form className="mt-4" onSubmit={handleLogin}>
+        <form className="mt-6 space-y-4" onSubmit={handleLogin}>
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border rounded mb-2"
+            className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
           <input
@@ -50,19 +51,19 @@ function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border rounded mb-2"
+            className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+            className="w-full bg-blue-600 text-white py-3 rounded font-bold hover:bg-blue-700"
           >
-            Login
+            Sign In
           </button>
         </form>
-        <p className="text-center mt-2">
+        <p className="text-center mt-4">
           Don't have an account?{" "}
-          <a href="/signup" className="text-blue-600">Sign up</a>
+          <Link to="/signup" className="text-blue-600 font-bold">Sign Up</Link>
         </p>
       </div>
     </div>

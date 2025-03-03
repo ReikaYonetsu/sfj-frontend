@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import signupBg from "../assets/signup.png";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -20,29 +21,29 @@ function Signup() {
       });
 
       const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Signup failed");
 
-      if (!response.ok) {
-        throw new Error(data.error || "Signup failed");
-      }
-
-      navigate("/login"); // Redirect to login after signup
+      navigate("/login");
     } catch (err) {
       setError(err.message);
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-bold text-center">Sign Up</h2>
+    <div
+      className="h-screen flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: `url(${signupBg})` }}
+    >
+      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+        <h2 className="text-3xl font-bold text-center text-blue-600">Sign Up</h2>
         {error && <p className="text-red-500 text-center">{error}</p>}
-        <form className="mt-4" onSubmit={handleSignup}>
+        <form className="mt-6 space-y-4" onSubmit={handleSignup}>
           <input
             type="text"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full p-2 border rounded mb-2"
+            className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
           <input
@@ -50,7 +51,7 @@ function Signup() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border rounded mb-2"
+            className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
           <input
@@ -58,19 +59,19 @@ function Signup() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border rounded mb-2"
+            className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+            className="w-full bg-blue-600 text-white py-3 rounded font-bold hover:bg-blue-700"
           >
             Sign Up
           </button>
         </form>
-        <p className="text-center mt-2">
+        <p className="text-center mt-4">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600">Login</a>
+          <Link to="/login" className="text-blue-600 font-bold">Sign In</Link>
         </p>
       </div>
     </div>
