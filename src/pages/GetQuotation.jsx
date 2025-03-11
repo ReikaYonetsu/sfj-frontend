@@ -6,13 +6,13 @@ function GetQuotation() {
     const [step, setStep] = useState(1);
     const [installationType, setInstallationType] = useState("Adhesive bonding");
     const [quantities, setQuantities] = useState({
-        "SFJ-100-EWH": 1,
-        "SFJ-125-EWH": 1,
-        "SFJ-210-EWH": 1,
-        "SFJ-300-EWH": 1,
-        "SFJ-400-EWH": 1,
-        "SFJ-400-EWH/F": 1,
-        "SFJ-520-EWH": 1,
+        "SFJ-100-EWH": 0,
+        "SFJ-125-EWH": 0,
+        "SFJ-210-EWH": 0,
+        "SFJ-300-EWH": 0,
+        "SFJ-400-EWH": 0,
+        "SFJ-400-EWH/F": 0,
+        "SFJ-520-EWH": 0,
     });
 
     const productPrices = {
@@ -49,6 +49,29 @@ function GetQuotation() {
         (total, product) => total + quantities[product] * productPrices[product],
         0
     );
+    const handleSubmit = async () => {
+        try {
+            const userId = localStorage.getItem("userId"); // Get userId from local storage
+            if (!userId) {
+              console.error("No user ID found. Please log in.");
+              return;
+            }          const response = await fetch("http://localhost:5001/api/quotations/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              userId,
+              products: quantities,
+              total: totalAmount,
+            }),
+          });
+      
+          if (!response.ok) throw new Error("Failed to submit quotation");
+          
+          navigate("/history");
+        } catch (error) {
+          console.error("Error submitting quotation:", error);
+        }
+      };
 
     return (
         <div className="h-screen flex flex-col items-center justify-center bg-gray-100">
@@ -160,7 +183,7 @@ function GetQuotation() {
                     <>
                         <h3 className="text-lg font-bold text-gray-900">Your quotation is successfully done!</h3>
                         <button
-                            onClick={() => navigate("/dashboard")}
+                            onClick={handleSubmit}
                             className="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
                         >
                             Submit

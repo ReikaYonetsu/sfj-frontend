@@ -1,32 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function History() {
   const navigate = useNavigate();
 
   // Sample data (Replace with actual API call later)
-  const [quotations] = useState([
-    {
-      id: 1,
-      date: "2024-03-01",
-      products: [
-        { name: "SFJ-100-EWH", quantity: 2, price: 20000 },
-        { name: "SFJ-400-EWH", quantity: 1, price: 30000 },
-      ],
-      total: 50000,
-      status: "Pending",
-    },
-    {
-      id: 2,
-      date: "2024-02-25",
-      products: [
-        { name: "SFJ-210-EWH", quantity: 1, price: 15000 },
-        { name: "SFJ-300-EWH", quantity: 2, price: 36000 },
-      ],
-      total: 51000,
-      status: "Approved",
-    },
-  ]);
+  const [quotations, setQuotations] = useState([]);
+
+  useEffect(() => {
+    const fetchQuotations = async () => {
+      try {
+        const userId = localStorage.getItem("userId"); // Get userId from local storage
+        if (!userId) {
+          console.error("No user ID found. Please log in.");
+          return;
+        }
+        const response = await fetch(`http://localhost:5001/api/quotations/${userId}`);
+        const data = await response.json();
+        setQuotations(data);
+      } catch (error) {
+        console.error("Error fetching quotations:", error);
+      }
+    };
+
+    fetchQuotations();
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -41,8 +39,8 @@ function History() {
     <div className="h-screen flex flex-col items-center bg-gray-100">
       {/* Navbar */}
       <nav className="w-full flex justify-between items-center p-4 bg-blue-800">
-      <Link to="/dashboard" className="text-lg font-bold text-white ml-6">SilfineJapan</Link>
-      <button onClick={handleLogout} className="bg-white text-blue-600 px-4 py-2 rounded-lg mr-6">
+        <Link to="/dashboard" className="text-lg font-bold text-white ml-6">SilfineJapan</Link>
+        <button onClick={handleLogout} className="bg-white text-blue-600 px-4 py-2 rounded-lg mr-6">
           Logout
         </button>
       </nav>
@@ -69,13 +67,14 @@ function History() {
             {quotations.length > 0 ? (
               quotations.map((quote) => (
                 <tr key={quote.id} className="border-t">
-                  <td className="p-3">{quote.date}</td>
+                  <td className="p-3">{quote.date.split("T")[0]}</td>
                   <td className="p-3">
-                    {quote.products.map((p) => (
-                      <div key={p.name}>
-                        {p.name} (x{p.quantity})
+                    {Object.entries(quote.products).map(([productName, quantity]) => (
+                      <div key={productName}>
+                        {productName} (x{quantity})
                       </div>
                     ))}
+
                   </td>
                   <td className="p-3">{quote.total}¥</td>
                   <td className="p-3">{quote.status}</td>

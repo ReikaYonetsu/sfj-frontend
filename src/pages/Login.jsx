@@ -23,6 +23,7 @@ function Login() {
       if (!response.ok) throw new Error(data.error || "Login failed");
 
       localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.user.id); // Store userId
       navigate("/dashboard");
     } catch (err) {
       setError(err.message);
