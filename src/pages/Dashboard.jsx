@@ -17,7 +17,7 @@ function Dashboard() {
     >
       {/* Navbar */}
       <nav className="absolute top-0 w-full flex justify-between items-center p-4 bg-blue-800">
-        <h1 className="text-lg font-bold text-white ml-6">Silfine Japan</h1>
+        <Link to="/dashboard" className="text-lg font-bold text-white ml-6">SilfineJapan</Link>
         <button onClick={handleLogout} className="bg-white text-blue-600 px-4 py-2 rounded-lg mr-6">
           Logout
         </button>

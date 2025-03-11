@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function History() {
   const navigate = useNavigate();
@@ -41,8 +41,8 @@ function History() {
     <div className="h-screen flex flex-col items-center bg-gray-100">
       {/* Navbar */}
       <nav className="w-full flex justify-between items-center p-4 bg-blue-800">
-        <h1 className="text-lg font-bold text-white ml-6">Silfine Japan</h1>
-        <button onClick={handleLogout} className="bg-white text-blue-600 px-4 py-2 rounded-lg mr-6">
+      <Link to="/dashboard" className="text-lg font-bold text-white ml-6">SilfineJapan</Link>
+      <button onClick={handleLogout} className="bg-white text-blue-600 px-4 py-2 rounded-lg mr-6">
           Logout
         </button>
       </nav>

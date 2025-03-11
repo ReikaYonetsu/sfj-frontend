@@ -19,7 +19,7 @@ function Homepage() {
             GET YOUR SOLAR QUOTE INSTANTLY
           </h1>
           <p className="mt-4 text-lg">Effortless solar panel pricing at your fingertips.</p>
-          <Link to="/get-quotation" className="mt-6 inline-block bg-green-500 px-6 py-3 text-white font-bold text-lg rounded-lg">
+          <Link to="/signup" className="mt-6 inline-block bg-green-500 px-6 py-3 text-white font-bold text-lg rounded-lg">
             Get Your Quote Now
           </Link>
         </div>
