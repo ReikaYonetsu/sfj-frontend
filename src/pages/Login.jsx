@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import loginBg from "../assets/login.png";
+import { useTranslation } from 'react-i18next';
+
 
 function Login() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -36,12 +39,12 @@ function Login() {
       style={{ backgroundImage: `url(${loginBg})` }}
     >
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-3xl font-bold text-center text-blue-600">Sign In</h2>
+        <h2 className="text-3xl font-bold text-center text-blue-600">{t('signinTitle')}</h2>
         {error && <p className="text-red-500 text-center">{error}</p>}
         <form className="mt-6 space-y-4" onSubmit={handleLogin}>
           <input
             type="email"
-            placeholder="Email"
+            placeholder={t('email')}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -49,7 +52,7 @@ function Login() {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder={t('password')}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -59,12 +62,12 @@ function Login() {
             type="submit"
             className="w-full bg-blue-600 text-white py-3 rounded font-bold hover:bg-blue-700"
           >
-            Sign In
+            {t('signin')}
           </button>
         </form>
         <p className="text-center mt-4">
-          Don't have an account?{" "}
-          <Link to="/signup" className="text-blue-600 font-bold">Sign Up</Link>
+        {t('noAccount')}{" "}
+          <Link to="/signup" className="text-blue-600 font-bold">{t('signupLink')}</Link>
         </p>
       </div>
     </div>

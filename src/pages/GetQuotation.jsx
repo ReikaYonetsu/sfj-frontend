@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+
 
 function GetQuotation() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [installationType, setInstallationType] = useState("Adhesive bonding");
@@ -77,16 +80,16 @@ function GetQuotation() {
         <div className="h-screen flex flex-col items-center justify-center bg-gray-100">
             {/* Navbar */}
             <nav className="absolute top-0 w-full flex justify-between items-center p-4 bg-blue-800">
-                <Link to="/dashboard" className="text-lg font-bold text-white ml-6">SilfineJapan</Link>
+                <Link to="/dashboard" className="text-lg font-bold text-white ml-6">{t('silfine')}</Link>
                 <button onClick={handleLogout} className="bg-white text-blue-600 px-4 py-2 rounded-lg mr-6">
-                    Logout
+                {t('logout')}
                 </button>
             </nav>
 
             {/* Main Content */}
             <div className="text-center mt-20">
-                <h2 className="text-3xl font-bold text-gray-900">Get a project quote</h2>
-                <p className="mt-2 text-gray-600">Please fill the form below to receive a quote for your project.</p>
+                <h2 className="text-3xl font-bold text-gray-900">{t('getQuoteHeading')}</h2>
+                <p className="mt-2 text-gray-600">	{t('getQuoteSubtext')}</p>
             </div>
 
             {/* Step Indicator */}
@@ -106,9 +109,9 @@ function GetQuotation() {
                 {/* Step 1: Product Selection */}
                 {step === 1 && (
                     <>
-                        <h3 className="text-lg font-bold text-gray-900">Our products</h3>
+                        <h3 className="text-lg font-bold text-gray-900">{t('step1Title')}</h3>
                         <p className="text-sm text-gray-600 mb-4">
-                            Please select which service you are interested in and set quantity.
+                        {t('step1Subtext')}
                         </p>
                         <div className="grid grid-cols-2 gap-4">
                             {Object.keys(quantities).map((product) => (
@@ -128,16 +131,17 @@ function GetQuotation() {
                 {/* Step 2: Installation Type */}
                 {step === 2 && (
                     <>
-                        <h3 className="text-lg font-bold text-gray-900">Installation</h3>
-                        <p className="text-sm text-gray-600 mb-4">Please choose installation.</p>
+                        <h3 className="text-lg font-bold text-gray-900">{t('step2Title')}</h3>
+                        <p className="text-sm text-gray-600 mb-4">	{t('step2Subtext')}</p>
                         <div className="flex space-x-4">
-                            {["Adhesive bonding", "Mounting"].map((type) => (
+                            {["adhesive", "mounting"].map((key) => (
                                 <button
-                                    key={type}
-                                    className={`p-4 border rounded-lg w-1/2 ${installationType === type ? "border-blue-600 bg-blue-50" : "border-gray-300"}`}
-                                    onClick={() => setInstallationType(type)}
+                                    key={key}
+                                    className={`p-4 border rounded-lg w-1/2 ${installationType === key ? "border-blue-600 bg-blue-50" : "border-gray-300"}`}
+                                    onClick={() => setInstallationType(key)}
                                 >
-                                    {type}
+                                    {t('adhesive')} {t('mountaing')}
+                                    {key}
                                 </button>
                             ))}
                         </div>
@@ -147,14 +151,14 @@ function GetQuotation() {
                 {/* Step 3: Pricing Table */}
                 {step === 3 && (
                     <>
-                        <h3 className="text-lg font-bold text-gray-900">Total price</h3>
-                        <p className="text-sm text-gray-600 mb-4">Based on your selection, this is the approximate price:</p>
+                        <h3 className="text-lg font-bold text-gray-900">{t('step3Title')}</h3>
+                        <p className="text-sm text-gray-600 mb-4">{t('step3Subtext')}</p>
                         <table className="w-full border">
                             <thead>
                                 <tr className="bg-gray-200">
-                                    <th className="p-2">Product</th>
-                                    <th className="p-2">Quantity</th>
-                                    <th className="p-2">Price</th>
+                                    <th className="p-2">{t('product')}</th>
+                                    <th className="p-2">{t('quantity')}</th>
+                                    <th className="p-2">{t('price')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -169,7 +173,7 @@ function GetQuotation() {
                                         )
                                 )}
                                 <tr className="bg-gray-200 font-bold">
-                                    <td className="p-2">Total</td>
+                                    <td className="p-2">{t('nextStep')}</td>
                                     <td className="p-2 text-center">-</td>
                                     <td className="p-2">{totalAmount}¥</td>
                                 </tr>
@@ -181,19 +185,19 @@ function GetQuotation() {
                 {/* Step 4: Confirmation */}
                 {step === 4 && (
                     <>
-                        <h3 className="text-lg font-bold text-gray-900">Your quotation is successfully done!</h3>
+                        <h3 className="text-lg font-bold text-gray-900">{t('step4Title')}</h3>
                         <button
                             onClick={handleSubmit}
                             className="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
                         >
-                            Submit
+                            {t('submit')}
                         </button>          </>
                 )}
 
                 {/* Navigation Buttons */}
                 <div className="mt-6 flex justify-between">
-                    {step > 1 && <button onClick={handlePreviousStep} className="text-blue-600">Previous step</button>}
-                    {step < 4 && <button onClick={handleNextStep} className="bg-blue-600 text-white px-6 py-3 rounded-lg">Next step</button>}
+                    {step > 1 && <button onClick={handlePreviousStep} className="text-blue-600">{t('prevStep')}</button>}
+                    {step < 4 && <button onClick={handleNextStep} className="bg-blue-600 text-white px-6 py-3 rounded-lg">{t('nextStep')}</button>}
                 </div>
             </div>
         </div>

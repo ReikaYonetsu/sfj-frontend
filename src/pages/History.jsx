@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+
 
 function History() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   // Sample data (Replace with actual API call later)
@@ -39,16 +42,16 @@ function History() {
     <div className="h-screen flex flex-col items-center bg-gray-100">
       {/* Navbar */}
       <nav className="w-full flex justify-between items-center p-4 bg-blue-800">
-        <Link to="/dashboard" className="text-lg font-bold text-white ml-6">SilfineJapan</Link>
+        <Link to="/dashboard" className="text-lg font-bold text-white ml-6">{t('silfine')}</Link>
         <button onClick={handleLogout} className="bg-white text-blue-600 px-4 py-2 rounded-lg mr-6">
-          Logout
+        {t('logout')}
         </button>
       </nav>
 
       {/* Title */}
       <div className="text-center mt-10">
-        <h2 className="text-3xl font-bold text-gray-900">Quotation History</h2>
-        <p className="text-gray-600 mt-2">Below are the quotations officially submitted to the company.</p>
+        <h2 className="text-3xl font-bold text-gray-900">{t('historyTitle')}</h2>
+        <p className="text-gray-600 mt-2">{t('historyDesc')}</p>
       </div>
 
       {/* History Table */}
@@ -56,11 +59,11 @@ function History() {
         <table className="w-full border">
           <thead>
             <tr className="bg-gray-200">
-              <th className="p-3 text-left">Date</th>
-              <th className="p-3 text-left">Products</th>
-              <th className="p-3 text-left">Total Price</th>
-              <th className="p-3 text-left">Status</th>
-              <th className="p-3 text-left">Download</th>
+              <th className="p-3 text-left">{t('date')}</th>
+              <th className="p-3 text-left">{t('product')}</th>
+              <th className="p-3 text-left">{t('price')}</th>
+              <th className="p-3 text-left">{t('status')}</th>
+              <th className="p-3 text-left">{t('download')}</th>
             </tr>
           </thead>
           <tbody>
@@ -83,7 +86,7 @@ function History() {
                       onClick={() => handleDownload(quote.id)}
                       className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                     >
-                      Download
+                      {t('download')}
                     </button>
                   </td>
                 </tr>
@@ -91,7 +94,7 @@ function History() {
             ) : (
               <tr>
                 <td colSpan="5" className="text-center p-3 text-gray-500">
-                  No submitted quotations found.
+                {t('noQuotations')}
                 </td>
               </tr>
             )}

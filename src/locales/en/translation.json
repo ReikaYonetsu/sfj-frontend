@@ -1,0 +1,89 @@
+{
+    "welcome": "Welcome to Silfine Japan",
+    "login": "Login",
+    "signup": "Sign Up",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "history": "Quotation History",
+    "getQuotation": "Get Quotation",
+    "language": "Language",
+
+
+    "getQuotationTitle": "GET YOUR SOLAR QUOTE INSTANTLY",
+    "getQuotationSubtitle": "Effortless solar panel pricing at your fingertips.",
+    "whyChooseUs": "WHY CHOOSE US?",
+    "chooseUsDesc": "Discover the advantages of automated quoting.",
+    "instantPricingTitle": "Instant Pricing",
+    "instantPricingDesc": "Receive accurate solar panel quotes in seconds, not days.",
+    "userFriendlyTitle": "User-Friendly Interface",
+    "userFriendlyDesc": "Our platform is designed for simplicity, making quoting a breeze.",
+    "comprehensiveOptionsTitle": "Comprehensive Options",
+    "comprehensiveOptionsDesc": "Explore a variety of solar solutions tailored to your needs.",
+    "howItWorks": "HOW IT WORKS",
+    "step1Title": "Step 1",
+    "step1Desc": "Enter your details to get started with your quote.",
+    "step2Title": "Step 2",
+    "step2Desc": "Receive tailored quotes based on your specifications.",
+    "step3Title": "Step 3",
+    "step3Desc": "Review your options and select the best plan for you.",
+    "getInTouch": "GET IN TOUCH",
+    "getInTouchDesc": "We're here to help you.",
+    "sendEmail": "Send Email",
+    "footer": "Silfine Japan | Your Solar Partner",
+
+
+    "silfine": "SilfineJapan",
+    "getQuoteHeading": "Get a project quote",
+    "getQuoteSubtext": "Please fill the form below to receive a quote for your project.",
+    "step1Title": "Our products",
+    "step1Subtext": "Please select which service you are interested in and set quantity.",
+    "step2Title": "Installation",
+    "step2Subtext": "Please choose installation.",
+    "step3Title": "Total price",
+    "step3Subtext": "Based on your selection, this is the approximate price:",
+    "product": "Product",
+    "quantity": "Quantity",
+    "price": "Price",
+    "total": "Total",
+    "step4Title": "Your quotation is successfully done!",
+    "submit": "Submit",
+    "logout": "Logout",
+    "prevStep": "Previous step",
+    "nextStep": "Next step",
+    "adhesive": "Adhesive bonding",
+    "mounting": "Mounting",
+
+
+    "historyTitle": "Quotation History",
+    "historyDesc": "Below are the quotations officially submitted to the company.",
+    "date": "Date",
+    "product": "Products",
+    "price": "Total Price",
+    "status": "Status",
+    "download": "Download",
+    "noQuotations": "No submitted quotations found.",
+
+
+    "dashboardHeading": "GET YOUR SOLAR QUOTE INSTANTLY",
+    "dashboardQuoteBtn": "GET QUOTATION",
+    "dashboardHistoryBtn": "SEE YOUR HISTORY",
+
+
+    "signinTitle": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "signin": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signupLink": "Sign Up",
+
+
+    "signupTitle": "Sign Up",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "signup": "Sign Up",
+    "alreadyHaveAccount": "Already have account?",
+    "loginLink": "Login"
+
+  }
+  

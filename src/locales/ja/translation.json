@@ -1,0 +1,89 @@
+{
+    "welcome": "シルファインジャパンへようこそ",
+    "login": "ログイン",
+    "signup": "サインアップ",
+    "logout": "ログアウト",
+    "dashboard": "ダッシュボード",
+    "history": "見積履歴",
+    "getQuotation": "見積もりを取得",
+    "language": "言語",
+
+
+    "getQuotationTitle": "今すぐソーラー見積もりを取得",
+    "getQuotationSubtitle": "指先で簡単にソーラーパネルの価格を確認。",
+    "whyChooseUs": "なぜ私たちを選ぶ？",
+    "chooseUsDesc": "自動見積もりの利点をご覧ください。",
+    "instantPricingTitle": "即時見積もり",
+    "instantPricingDesc": "数秒で正確なソーラーパネルの見積もりを取得。",
+    "userFriendlyTitle": "使いやすいインターフェース",
+    "userFriendlyDesc": "当社のプラットフォームはシンプルさを重視して設計されています。",
+    "comprehensiveOptionsTitle": "多彩なオプション",
+    "comprehensiveOptionsDesc": "お客様のニーズに合わせた様々なソーラーソリューションをご用意しています。",
+    "howItWorks": "使い方",
+    "step1Title": "ステップ1",
+    "step1Desc": "見積もりを開始するための情報を入力してください。",
+    "step2Title": "ステップ2",
+    "step2Desc": "ご希望に基づいた見積もりを受け取ります。",
+    "step3Title": "ステップ3",
+    "step3Desc": "オプションを確認し、最適なプランを選択します。",
+    "getInTouch": "お問い合わせ",
+    "getInTouchDesc": "ご不明な点がございましたらご連絡ください。",
+    "sendEmail": "メールを送信",
+    "footer": "シルファインジャパン｜あなたのソーラーパートナー",
+
+
+    "silfine": "シルファインジャパン",
+    "getQuoteHeading": "プロジェクトの見積もりを取得",
+    "getQuoteSubtext": "以下のフォームにご記入の上、見積もりを取得してください。",
+    "step1Title": "製品一覧",
+    "step1Subtext": "ご希望の製品と数量を選択してください。",
+    "step2Title": "設置方法",
+    "step2Subtext": "設置方法を選択してください。",
+    "step3Title": "合計金額",
+    "step3Subtext": "選択内容に基づく概算金額です：",
+    "product": "製品",
+    "quantity": "数量",
+    "price": "価格",
+    "total": "合計",
+    "step4Title": "見積もりが正常に完了しました！",
+    "submit": "送信",
+    "logout": "ログアウト",
+    "prevStep": "前のステップ",
+    "nextStep": "次のステップ",
+    "adhesive": "接着設置",
+    "mounting": "マウント設置",
+
+
+    "historyTitle": "見積履歴",
+    "historyDesc": "以下は会社に正式に提出された見積もりです。",
+    "date": "日付",
+    "product": "製品",
+    "price": "合計金額",
+    "status": "ステータス",
+    "download": "ダウンロード",
+    "noQuotations": "提出された見積もりはありません。",
+
+
+    "dashboardHeading": "今すぐソーラー見積もりを取得",
+    "dashboardQuoteBtn": "見積もりを取得",
+    "dashboardHistoryBtn": "履歴を見る",
+
+
+    "signinTitle": "ログイン",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "signin": "ログイン",
+    "noAccount": "アカウントをお持ちでない方はこちら",
+    "signupLink": "サインアップ",
+
+
+    "signupTitle": "サインアップ",
+    "username": "ユーザー名",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "signup": "サインアップ",
+    "alreadyHaveAccount": "既にアカウントをお持ちの方はこちら",
+    "loginLink": "ログイン"
+
+  }
+  
