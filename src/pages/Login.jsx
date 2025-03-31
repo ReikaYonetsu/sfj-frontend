@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import loginBg from "../assets/login.png";
 import { useTranslation } from 'react-i18next';
+import HomeButton from "./HomeButton";
+
 
 
 function Login() {
@@ -34,6 +36,9 @@ function Login() {
   };
 
   return (
+    <>
+    <HomeButton />
+    
     <div
       className="h-screen flex items-center justify-center bg-cover bg-center"
       style={{ backgroundImage: `url(${loginBg})` }}
@@ -71,6 +76,7 @@ function Login() {
         </p>
       </div>
     </div>
+    </>
   );
 }
 

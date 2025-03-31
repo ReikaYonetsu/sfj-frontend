@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import solarImage from "../assets/solar.png";
 import { useTranslation } from 'react-i18next';
+import LanguageDropdown from "./LanguageDropdown";
 
 
 function Homepage() {
@@ -10,15 +11,17 @@ function Homepage() {
     <div className="bg-blue-600 text-white">
       {/* Navbar */}
       <nav className="flex justify-between items-center p-4 bg-blue-800">
-        <h1 className="text-lg font-bold">{t('welcome')}</h1>
-        <div>
-          <Link to="/login" className="bg-white text-blue-600 px-4 py-2 rounded-lg">{t('login')}</Link>
-        </div>
+       <h1 className="text-lg font-bold">{t('welcome')}</h1>
+       <div className="flex items-center space-x-4">
+         <LanguageDropdown />
+         <Link to="/login" className="bg-white text-blue-600 px-4 py-2 rounded-lg">{t('login')}</Link>
+       </div>
       </nav>
+
 
       {/* Hero Section */}
       <div className="flex flex-col md:flex-row items-center p-10 md:p-20">
-        <div className="md:w-1/2 text-center md:text-left">
+        <div className="md:w-1/2 text-center md:text-left md:ml-16">
           <h1 className="text-4xl md:text-6xl font-bold leading-tight">
             {t('getQuotation')}
           </h1>

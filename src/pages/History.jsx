@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+
+
+
 
 
 function History() {
@@ -33,10 +38,56 @@ function History() {
     localStorage.removeItem("token");
     navigate("/login");
   };
+  
 
-  const handleDownload = (id) => {
-    alert(`Downloading quotation #${id}...`); // Replace with actual download logic
-  };
+const handleDownload = (quote) => {
+  const { id, date, products, total, status } = quote;
+
+  const doc = new jsPDF();
+
+  // Title
+  doc.setFontSize(18);
+  doc.text("Quotation", 14, 20);
+
+  // Basic info
+  doc.setFontSize(12);
+  doc.text(`Quotation ID: ${id}`, 14, 30);
+  doc.text(`Date: ${date.split("T")[0]}`, 14, 38);
+  doc.text(`Status: ${status}`, 14, 46);
+
+  // Prepare table data
+  const tableData = Object.entries(products).map(([name, qty]) => [
+    name,
+    qty,
+  ]);
+
+  let tableY = 55;
+
+  // Render table only if there are products
+  if (tableData.length > 0) {
+    autoTable(doc, {
+      startY: tableY,
+      head: [["Product", "Quantity"]],
+      body: tableData,
+    });
+
+    // Adjust Y position after table
+    tableY = doc.lastAutoTable.finalY + 10;
+  } else {
+    tableY += 10;
+  }
+
+  // Total
+  doc.text(`Total: ¥${total}`, 14, tableY);
+
+  // Save the PDF
+  doc.save(`quotation-${id}.pdf`);
+};
+
+  
+  
+  
+
 
   return (
     <div className="h-screen flex flex-col items-center bg-gray-100">
@@ -44,7 +95,7 @@ function History() {
       <nav className="w-full flex justify-between items-center p-4 bg-blue-800">
         <Link to="/dashboard" className="text-lg font-bold text-white ml-6">{t('silfine')}</Link>
         <button onClick={handleLogout} className="bg-white text-blue-600 px-4 py-2 rounded-lg mr-6">
-        {t('logout')}
+          {t('logout')}
         </button>
       </nav>
 
@@ -83,7 +134,8 @@ function History() {
                   <td className="p-3">{quote.status}</td>
                   <td className="p-3">
                     <button
-                      onClick={() => handleDownload(quote.id)}
+                      onClick={() => handleDownload(quote)}
+
                       className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                     >
                       {t('download')}
@@ -94,7 +146,7 @@ function History() {
             ) : (
               <tr>
                 <td colSpan="5" className="text-center p-3 text-gray-500">
-                {t('noQuotations')}
+                  {t('noQuotations')}
                 </td>
               </tr>
             )}

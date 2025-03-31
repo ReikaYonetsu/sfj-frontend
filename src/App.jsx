@@ -6,15 +6,16 @@ import Dashboard from "./pages/Dashboard";
 import GetQuotation from "./pages/GetQuotation";
 import History from "./pages/History";
 import { useTranslation } from 'react-i18next';
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 
 function App() {
   const { i18n } = useTranslation();
 
-const toggleLanguage = () => {
-  const newLang = i18n.language === 'en' ? 'ja' : 'en';
-  i18n.changeLanguage(newLang);
-};
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'ja' : 'en';
+    i18n.changeLanguage(newLang);
+  };
 
   return (
     <Router>
@@ -22,24 +23,40 @@ const toggleLanguage = () => {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/get-quotation" element={<GetQuotation />} />
-        <Route path="/history" element={<History />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/get-quotation"
+          element={
+            <ProtectedRoute>
+              <GetQuotation />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <ProtectedRoute>
+              <History />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
       <div className="fixed top-4 right-4 z-50">
-    <button
-      onClick={toggleLanguage}
-      className="bg-white text-blue-600 font-bold py-1 px-3 rounded shadow"
-    >
-      {i18n.language === 'en' ? '日本語' : 'English'}
-    </button>
-  </div>
+
+      </div>
     </Router>
 
-    
-  
 
-    
+
+
   );
 }
 
