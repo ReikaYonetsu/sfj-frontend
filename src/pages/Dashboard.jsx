@@ -27,7 +27,7 @@ function Dashboard() {
       </nav>
 
 {/* Title + Logo Block */}
-<div className="flex flex-col md:flex-row items-center justify-between px-20 mt-0 w-full max-w-7xl mx-auto mb-50">
+<div className="flex flex-col md:flex-row items-center justify-between px-20 mt-0 w-full max-w-7xl mx-auto mb-40">
   {/* Left: Title + Buttons */}
   <div className="text-white max-w-2xl md:text-left text-center">
     <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
